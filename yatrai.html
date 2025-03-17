@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yatra AI - Your Smart Travel Assistant</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+            color: #333;
+        }
+        .header {
+            background: #0F2B4B;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: #0F2B4B;
+            color: white;
+        }
+        .logo {
+            height: 50px;
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .nav-links a:hover {
+            color: #FFD700;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+        }
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .feature {
+            background: white;
+            padding: 20px;
+            margin: 10px;
+            flex: 1;
+            min-width: 280px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .map-container {
+            display: none;
+            height: 400px;
+            margin-top: 20px;
+        }
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #0F2B4B;
+            color: white;
+            margin-top: 20px;
+        }
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background: #0F2B4B;
+                width: 200px;
+                text-align: center;
+                padding: 10px;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .nav-links.show {
+                display: flex;
+            }
+        }
+        @media (min-width: 1024px) {
+            .map-container {
+                display: block;
+            }
+        }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+</head>
+<body>
+    <div class="header">
+        <img src="/Users/Simran/Documents/GitHub/MobApp/logo.png" alt="Yatra AI Logo" class="logo">
+        <h1>Yatra AI</h1>
+        <p>Your Smart Travel Assistant for Efficient & Scenic Journeys</p>
+    </div>
+    <nav class="navbar">
+        <div>Yatra AI</div>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        <div class="nav-links">
+            <a href="#">Fastest Route</a>
+            <a href="#">Book a Ride</a>
+            <a href="#">Eco Route</a>
+            <a href="#">Traffic Info</a>
+            <a href="#">Saved Routes</a>
+        </div>
+    </nav>
+    <div class="container">
+        <h2>About Yatra AI</h2>
+        <p>Yatra AI is an innovative travel and transport management app designed to provide the fastest, most efficient, and eco-friendly routes while also offering ride booking and food delivery services.</p>
+        <h2>Features</h2>
+        <div class="features">
+            <div class="feature">
+                <h3>Fastest Route</h3>
+                <p>Get real-time navigation to your destination with AI-powered optimization.</p>
+            </div>
+            <div class="feature">
+                <h3>Ride Booking</h3>
+                <p>Book a ride effortlessly with our integrated ride-hailing service.</p>
+            </div>
+            <div class="feature">
+                <h3>Eco-Friendly Routes</h3>
+                <p>Choose greener and more sustainable travel options.</p>
+            </div>
+            <div class="feature">
+                <h3>Real-Time Traffic</h3>
+                <p>Stay updated with live traffic reports to avoid congestion.</p>
+            </div>
+            <div class="feature">
+                <h3>Scenic Routes</h3>
+                <p>Enjoy picturesque routes recommended for travelers.</p>
+            </div>
+            <div class="feature">
+                <h3>Food Delivery</h3>
+                <p>Order food while on the move with our seamless delivery service.</p>
+            </div>
+        </div>
+    </div>
+    <div class="map-container">
+        <div id="map"></div>
+    </div>
+    <div class="footer">
+        <p>&copy; 2025 Yatra AI. All rights reserved.</p>
+    </div>
+    <script>
+        function toggleMenu() {
+            document.querySelector(".nav-links").classList.toggle("show");
+        }
+        function initMap() {
+            var options = {
+                zoom: 12,
+                center: { lat: 27.7172, lng: 85.3240 }
+            };
+            var map = new google.maps.Map(document.getElementById('map'), options);
+        }
+    </script>
+</body>
+</html>
